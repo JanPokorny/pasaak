@@ -22,7 +22,7 @@ These are this user's additions to `AGENTS.md`, and they override it where the t
 
 - **Fixes:** prefer the simplest fix. Add extra rigor only for security or data loss. Skip edge cases unless they're a real problem.
 - **Merging:** merge only when the user says so. "Merge the green ones" means CI is green and the bot approved the current head. Bot-authored PRs (`dam-application`, `dependabot`) may be taken over and merged.
-- **JanUI:** the user works on JanUI with its agent directly, so don't open its PRs unprompted.
+- **JanUI:** send every JanUI request to the one long-lived "JanUI refinements" workstream, each as its own commit. Its PR opens only when the user asks for it. The user also talks to that agent directly.
 
 ## Environment
 
