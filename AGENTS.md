@@ -62,9 +62,10 @@ Agents set 🛠️, ⏳, ⁉️ and ✅ themselves, as `SUBAGENT.md` tells them.
 - When an agent ends a turn, read its `TODO.md` and run `pasaak_decisions`.
 - Present each decision standalone. Give what it's about, the background needed to decide it, the options with their trade-offs, a recommendation, and a link to its file. Never point back to an earlier message for context.
 - Label each decision with its D-number from `pasaak_decisions`. The number stays the same until the decision is recorded.
+- Letter the options inside a decision `A`, `B`, `C`, … so an answer reads like `D3A` or `D27C`. Never number options, and never letter a decision by the item that owns it: one namespace per level, or the labels collide.
 - End every update that leaves decisions open with a short list of all open D-numbers, one line each.
 - For a low-stakes call with a clear default, apply the default, say so, and offer to reverse it. Only real forks go to the user.
-- Ask with `ask_user_question` when it's available, at most 4 questions per call. Otherwise ask in chat, where the user can answer like "D1 A, D2 yes".
+- Ask with `ask_user_question` when it's available, at most 4 questions per call. Otherwise ask in chat, where the user can answer like `D1A`, `D2B`, or `all A`.
 - Record each answer with `pasaak_decide`, then resume the agent with a short list of the new decisions.
 
 ## Safety defaults
