@@ -60,10 +60,11 @@ Agents set 🛠️, ⏳, ⁉️ and ✅ themselves, as `SUBAGENT.md` tells them.
 ## Decisions
 
 - When an agent ends a turn, read its `TODO.md` and run `pasaak_decisions`.
-- Present each decision standalone. Give what it's about, the background needed to decide it, the options with their trade-offs, a recommendation, and a link to its file. Never point back to an earlier message for context.
-- Label each decision with its D-number from `pasaak_decisions`. The number stays the same until the decision is recorded.
+- Present each decision standalone. Give what it's about, the background needed to decide it, the options with their trade-offs, a recommendation, and its file. Never point back to an earlier message for context.
+- The label is the link: write every decision number as a Markdown link to that decision's own file, with an **absolute** path — `[D123](/Users/jp/git/github.com/JanPokorny/pasaak/state/agents/<id>/to-decide/<slug>.md)`. Never write a bare `D123` when the decision is presented or listed, and never use a relative path: the user reads these from outside the state folder, so a relative link is dead. After the decision is recorded, keep linking it, now at its `decided/` path, so an old update still resolves.
+- The number stays the same until the decision is recorded, and it comes from `pasaak_decisions` (with the tool absent, number from the last D-number already used in the state folders, continuing upward).
 - Letter the options inside a decision `A`, `B`, `C`, … so an answer reads like `D3A` or `D27C`. Never number options, and never letter a decision by the item that owns it: one namespace per level, or the labels collide.
-- End every update that leaves decisions open with a short list of all open D-numbers, one line each.
+- End every update that leaves decisions open with a short list of all open decisions, one line each, each one a linked `[D123](…)` label followed by what it decides.
 - For a low-stakes call with a clear default, apply the default, say so, and offer to reverse it. Only real forks go to the user.
 - Ask with `ask_user_question` when it's available, at most 4 questions per call. Otherwise ask in chat, where the user can answer like `D1A`, `D2B`, or `all A`.
 - Record each answer with `pasaak_decide`, then resume the agent with a short list of the new decisions.
