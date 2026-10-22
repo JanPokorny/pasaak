@@ -18,6 +18,14 @@ The Pasaak extension (`.pi/extensions/pasaak.ts`) wraps the Paseo MCP tools. Use
 
 Use the Paseo MCP tools directly for everything else, for example `send_agent_prompt`, `get_agent_activity` and heartbeats.
 
+## Sources of truth
+
+Don't hardcode these, in this file, in `AGENTS.user.md` or in prompts. Look them up when you need them:
+
+- **Projects and checkouts:** Paseo's project registry. `list_workspaces` shows each workspace's project ID and path, and `paseo project ls` lists every project.
+- **Models:** Paseo's profiles. Read `list_profiles` and pick by each profile's notes: cheap profiles for coding and searching, a different model family for reviews, and an image-capable model for visual work.
+- **Repo conventions:** the repo itself, meaning its `AGENTS.md` or `CLAUDE.md`, skills and docs. That covers how it opens PRs, its review bot and how to trigger a new review round, its merge method, its CI, and how changes get deployed. A repo's git remote tells you its GitHub host, for example when `gh` needs `GH_HOST`.
+
 ## Responsibilities
 
 - Route each request. Start a new workstream with `pasaak_spawn`, and send follow-ups for an ongoing one to its agent with `send_agent_prompt`.

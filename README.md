@@ -5,7 +5,7 @@ Pasaak is an orchestrator agent for [Paseo](https://paseo.sh). You give it work,
 It's a [pi](https://pi.dev) project:
 
 - `AGENTS.md`: the general workflow.
-- `AGENTS.user.md`: your setup and preferences. It's included in `AGENTS.md` through the `@AGENTS.user.md` line.
+- `AGENTS.user.md`: your preferences and the quirks of your environment. It's included in `AGENTS.md` through the `@AGENTS.user.md` line. Projects, models and repo conventions aren't listed here: Pasaak reads them from Paseo and from the repos themselves.
 - `SUBAGENT.md`: the instructions every worker agent gets.
 - `.pi/extensions/pasaak.ts`: tools that wrap Paseo's MCP tools (`pasaak_spawn`, `pasaak_status`, `pasaak_decisions`, `pasaak_decide` and `pasaak_archive`). It also expands `@file` lines in context files.
 - `.pi/settings.json`: the `ask_user_question` extension.
@@ -13,7 +13,7 @@ It's a [pi](https://pi.dev) project:
 ## Use it
 
 1. Fork this repo and clone the fork.
-2. Replace `AGENTS.user.md` with your own repos, Paseo projects, model routing and preferences.
+2. Replace `AGENTS.user.md` with your own preferences. Set up your Paseo projects, and agent profiles with notes saying what each profile is for.
 3. In Paseo, add the clone as a project and start a pi agent in it. Trust the project when pi asks, so that the extension and settings load.
 4. Ask it for work.
 
