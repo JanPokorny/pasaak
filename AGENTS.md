@@ -47,7 +47,7 @@ Each workstream has a folder `state/agents/<id>`, relative to this file, where `
 
 ## Names and statuses
 
-Every workstream's agent and workspace are named `↳ <status> <title>`. The Paseo sidebar shows the workspace title, so that's the one that matters. Statuses:
+Every workstream's agent and workspace are named `<status> <title>`, the status emoji first. The Paseo sidebar shows the workspace title, so that's the one that matters. Statuses:
 
 - 🛠️ working
 - ⏳ waiting for CI or the automated review
@@ -55,7 +55,7 @@ Every workstream's agent and workspace are named `↳ <status> <title>`. The Pas
 - ✅ done, waiting for a human LGTM (the PR isn't merged yet)
 - 🏁 done and merged
 
-Agents set 🛠️, ⏳, ⁉️ and ✅ themselves, as `SUBAGENT.md` tells them. CI results and merges don't wake an agent, so the PR heartbeat sets ⏳, ✅ and 🏁 as they happen. Fix any name that drifts with `pasaak_status`.
+Agents set 🛠️, ⏳, ⁉️ and ✅ themselves, as `SUBAGENT.md` tells them. ✅ means nothing is running: an agent that gets new instructions goes back to 🛠️ at once, and Pasaak sets 🛠️ itself (`pasaak_status`) whenever it resumes an agent with new work, before or with the prompt. CI results and merges don't wake an agent, so the PR heartbeat sets ⏳, ✅ and 🏁 as they happen. Fix any name that drifts with `pasaak_status`.
 
 ## Decisions
 

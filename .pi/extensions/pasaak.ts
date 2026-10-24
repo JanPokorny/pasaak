@@ -29,7 +29,7 @@ async function paseo(ctx: any, tool: string, args: object, signal?: AbortSignal)
 }
 
 const stateDir = (cwd: string, id: string) => path.join(cwd, "state", "agents", id);
-const label = (status: string, title: string) => `↳ ${status} ${title}`;
+const label = (status: string, title: string) => `${status} ${title}`;
 const ok = (text: string, details?: unknown) => ({ content: [{ type: "text" as const, text }], details });
 
 function readMeta(cwd: string, id: string) {
@@ -80,10 +80,10 @@ export default function pasaak(pi: ExtensionAPI) {
 			name: "pasaak_spawn",
 			label: "Pasaak spawn",
 			description:
-				"Start a workstream: create state/agents/<id>, a Paseo workspace (unless workspaceId is given) and an agent titled `↳ 🛠️ <title>`, whose prompt is the task followed by SUBAGENT.md. Give a Paseo profile name or a provider.",
+				"Start a workstream: create state/agents/<id>, a Paseo workspace (unless workspaceId is given) and an agent titled `🛠️ <title>`, whose prompt is the task followed by SUBAGENT.md. Give a Paseo profile name or a provider.",
 			parameters: Type.Object({
 				id: Type.String({ description: "Short kebab-case slug, e.g. fix-login-redirect" }),
-				title: Type.String({ description: "Short human title, without the ↳ or status" }),
+				title: Type.String({ description: "Short human title, without the status" }),
 				task: Type.String({ description: "The task prompt, including the GitHub and live writes it authorizes" }),
 				projectId: Type.Optional(Type.String({ description: "Paseo project of the source repo" })),
 				path: Type.Optional(Type.String({ description: "Source checkout path, or the directory for a local workspace" })),
@@ -161,7 +161,7 @@ export default function pasaak(pi: ExtensionAPI) {
 		defineTool({
 			name: "pasaak_status",
 			label: "Pasaak status",
-			description: "Set a workstream's status on both its agent name and its workspace title (`↳ <status> <title>`).",
+			description: "Set a workstream's status on both its agent name and its workspace title (`<status> <title>`).",
 			parameters: Type.Object({
 				id: Type.String(),
 				status: Type.Union(STATUSES.map((s) => Type.Literal(s))),

@@ -4,14 +4,14 @@ Your state folder is `<STATE>`, and your workspace is `<WORKSPACE_ID>`. Keep the
 - `<STATE>/to-decide/<slug>.md`: for each decision you need from the user, write one file. It must stand on its own: what it's about, the background needed to decide it, the options (2–4, each with its trade-offs), and your recommendation. **Letter the options `A`, `B`, `C` — never number them**: the orchestrator numbers decisions `D1`, `D2`, …, so an answer reads `D5B`, and a numbered option would collide with that namespace. Mark the affected TODO items ⁉️. Keep going on unblocked work, and end your turn once only blocked items remain.
 - `<STATE>/decided/`: decisions that have been made. Read it whenever you're resumed, and don't edit it.
 
-Your name and your workspace's title are `↳ <status> <TITLE>`. Keep the title as it is and change only the status:
+Your name and your workspace's title are `<status> <TITLE>`, the status emoji first. Keep the title as it is and change only the status:
 
 - 🛠️ working
 - ⏳ waiting for CI or the automated review
 - ⁉️ decision needed
 - ✅ done, waiting for a human LGTM
 
-Whenever your status changes, and before you end each turn, set both:
+✅ means you have nothing running. The moment a new prompt or instruction arrives while you are ✅ (or ⏳/⁉️), set 🛠️ first, before any other work, and set ✅ again only at the end of a turn that leaves nothing to do. Whenever your status changes, and before you end each turn, set both:
 
 - with the Paseo MCP tools: `update_agent` with your own agent ID (`$PASEO_AGENT_ID` in your environment) and `name`, then `rename_workspace` with `workspaceId: <WORKSPACE_ID>` and `title`;
 - or, if you only have the CLI: `paseo agent update "$PASEO_AGENT_ID" --name "…"` and `paseo workspace rename <WORKSPACE_ID> "…"`.
