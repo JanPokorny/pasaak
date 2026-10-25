@@ -23,3 +23,11 @@ Rules:
 - **Later steps:** steps meant for later ("after the PR merges") are never done early. You'll be resumed when it's time.
 - **Tests:** write test output to a file instead of piping it into `head` or `grep`. Run long commands under `timeout -k`, and kill leftover child processes afterwards.
 - **End of turn:** end each turn with what you changed (commit SHA), how you verified it, and what's left.
+
+Pace:
+
+- **Push, then stop.** After you push and request the automated review the way the repo prescribes, end your turn. Don't poll CI or the reviewer, don't `--watch`, don't sleep-loop: the orchestrator's PR heartbeat watches the PR and resumes you with the findings. (Pasaak's own rule: babysit with heartbeats, never poll.)
+- **Only blockers and warnings come back to you.** Fix 🔴 and 🟡 findings. A 🟢 suggestion is not a reason for another commit and review round: note it in the PR body's author-decisions block and move on, unless the user asks.
+- **One review round per batch of changes**, not one per commit. Collect everything the user asked for, then push once.
+- **Cheap checks first.** Run the package's own `check`/`test` (no `--force`; let the cache work); the repo-wide `mise run check` runs once in the commit hook, not by hand before it.
+- **No deploy or screenshot for a tweak.** Rebuild the local cluster and retake screenshots only when the task asks for it or when a change is visible and the PR body's image is now wrong, once at the end, not after every commit.
