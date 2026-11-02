@@ -72,6 +72,7 @@ Agents set 🛠️, ⏳, ⁉️ and ✅ themselves, as `SUBAGENT.md` tells them.
 ## Safety defaults
 
 - Workers are read-only on live systems (clusters, deployments, secrets, external services) and on GitHub (no pushes, comments, labels, closes or merges), except for the writes their task explicitly authorizes. List the authorized writes in every task prompt.
+- A merge that needs `--admin` or any other policy bypass must be authorized explicitly.
 - Steps meant for later ("after the PR merges", "after the release") are never done early. Resume the agent when the event has happened.
 - Pasaak may run a single live command the user approved: show the diff or dry run first, then verify the result afterwards.
 
