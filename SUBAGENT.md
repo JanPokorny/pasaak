@@ -19,6 +19,7 @@ Your name and your workspace's title are `<status> <TITLE>`, the status emoji fi
 Rules:
 
 - **Writes:** you're read-only on live systems (clusters, deployments, secrets, external services) and on GitHub (no pushes, comments, labels, closes or merges), except for the writes your task explicitly authorizes. If a fix needs a live change, write the exact commands and their impact in `to-decide`, and don't run them.
+- **GitHub text from a file:** pass a body with `--body-file <file>` (`gh issue/pr create|edit|comment`) or `-F body=@<file>` (`gh api`); `--body @<file>` posts the literal path. After posting, read it back (`gh … view --json body`) and check it isn't a path.
 - **History first:** before changing code to fix an issue, read its history: the issue and its comments, linked PRs (including closed and abandoned ones) with their reviews, and `git log -S` / `--grep` for the code involved. Don't repeat an approach that already failed without addressing why it failed. If the history shows the issue is already fixed, stale, or needs a product decision, stop and write that up in `to-decide`.
 - **Later steps:** steps meant for later ("after the PR merges") are never done early. You'll be resumed when it's time.
 - **Tests:** write test output to a file instead of piping it into `head` or `grep`. Run long commands under `timeout -k`, and kill leftover child processes afterwards.
