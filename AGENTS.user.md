@@ -7,4 +7,5 @@
 - **Merging:** merge only when the user says so. "Merge the green ones" means CI is green and the automated reviewer approved the current head. PRs authored by bots (GitHub apps, dependabot) may be taken over and merged.
 - **Names:** a workstream with its own local install puts the install's port in brackets right after the status, e.g. `⏳ [4400] Profiles: single PR, slimmed`; one without an install has no port. Titles never contain a PR or issue number.
 - **Review ping-pong:** a fix ↔ review loop (Code Guardian or the cross-model review) runs at most 5 rounds, then Pasaak stops and asks the user; when running unattended, the limit is 10. This replaces the "two design-level rounds in a row" stop.
+- **Backport findings:** when a backport review finds an issue that isn't specific to the backport (it also exists on main), fix it on main too, in its own PR.
 - **Browsers:** agents drive browsers headless only (agent-browser, Playwright). A headed window steals the user's focus. If a sign-in needs the user, open headed just for that, then switch back to headless with the same profile.
