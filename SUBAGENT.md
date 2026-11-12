@@ -24,6 +24,17 @@ Rules:
 - **Later steps:** steps meant for later ("after the PR merges") are never done early. You'll be resumed when it's time.
 - **Tests:** write test output to a file instead of piping it into `head` or `grep`. Run long commands under `timeout -k`, and kill leftover child processes afterwards.
 - **End of turn:** end each turn with what you changed (commit SHA), how you verified it, and what's left.
+- **Tell the orchestrator:** when you finish a task, or write a `to-decide` file, send the orchestrator a short message right away (`paseo send --no-wait <ORCHESTRATOR_ID> "<workstream>: <what's done or what's waiting>"`). Don't rely on your turn ending to notify it.
+
+Paseo:
+
+- **Delegation:** Paseo agents only (`paseo`), never harness subagents, even for lookups. Pick profiles by their notes. Cheap profiles do the heavy lifting (coding, searching); expensive ones (Opus, Astra) only plan, review, advise, and sit on committees. Exception: web research goes to Claude (better web search).
+- **Review:** after building, get a review from an advisor of a different provider family (`paseo-advisor`). Stuck or hard planning: `paseo-committee`. Passing work on: `paseo-handoff`.
+- **Worktrees:** never edit or switch branches in a root checkout (`~/git/<host>/<owner>/<repo>`). One Paseo worktree workspace per PR.
+- **Subagent placement:** launch into your own workspace (omit `workspaceId`) for read-only work (review, search, advice) and for independent workstreams that touch separate files. Create a new worktree workspace only when the subagent needs its own branch or its edits would collide with yours; title it `↳ <task>`.
+- **Waiting:** trust finish notifications; never poll. Don't end your turn while waiting on your own long command (an install, a build): nothing wakes you when it finishes.
+- **Browser QA and screenshots:** Paseo browser tools, headless.
+- **Dev servers:** Paseo workspace scripts (`paseo.json`).
 
 Pace:
 

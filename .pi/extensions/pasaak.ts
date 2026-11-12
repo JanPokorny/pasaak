@@ -136,6 +136,7 @@ export default function pasaak(pi: ExtensionAPI) {
 					.readFileSync(path.join(ctx.cwd, "SUBAGENT.md"), "utf8")
 					.replaceAll("<STATE>", dir)
 					.replaceAll("<WORKSPACE_ID>", workspaceId)
+					.replaceAll("<ORCHESTRATOR_ID>", process.env.PASEO_AGENT_ID ?? "")
 					.replaceAll("<TITLE>", p.title);
 				const agent = await paseo(
 					ctx,
