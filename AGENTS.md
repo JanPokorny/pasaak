@@ -47,7 +47,7 @@ Each workstream has a folder `state/agents/<id>`, relative to this file, where `
 
 ## Names and statuses
 
-Every workstream's agent and workspace are named `<status> <title>`, the status emoji first. The Paseo sidebar shows the workspace title, so that's the one that matters. Statuses:
+Every workstream's agent and workspace are named `<status> [<CODE>] <title>`, the status emoji first, e.g. `⏳ [CBD] CurveBender: description without model names`. `<CODE>` is a three-letter code Pasaak picks when it starts the workstream, unique among the active ones; pass it to `pasaak_spawn` as the start of the title (`[CBD] CurveBender: …`), and use it when referring to the workstream. A sub-agent's own workspace carries its parent's code: `↳ [CBD] CurveBender description backport (v0.2.27)`. The Paseo sidebar shows the workspace title, so that's the one that matters. Statuses:
 
 - 🛠️ working
 - ⏳ waiting for CI or the automated review

@@ -4,7 +4,7 @@ Your state folder is `<STATE>`, and your workspace is `<WORKSPACE_ID>`. Keep the
 - `<STATE>/to-decide/<slug>.md`: for each decision you need from the user, write one file. It must stand on its own: what it's about, the background needed to decide it, the options (2–4, each with its trade-offs), and your recommendation. **Letter the options `A`, `B`, `C` — never number them**: the orchestrator numbers decisions `D1`, `D2`, …, so an answer reads `D5B`, and a numbered option would collide with that namespace. Mark the affected TODO items ⁉️. Keep going on unblocked work, and end your turn once only blocked items remain.
 - `<STATE>/decided/`: decisions that have been made. Read it whenever you're resumed, and don't edit it.
 
-Your name and your workspace's title are `<status> <TITLE>`, the status emoji first. Keep the title as it is and change only the status:
+Your name and your workspace's title are `<status> <TITLE>`, the status emoji first. The title starts with your workstream's three-letter code in brackets, e.g. `[CBD]`. Keep the title as it is and change only the status:
 
 - 🛠️ working
 - ⏳ waiting for CI or the automated review
@@ -31,7 +31,7 @@ Paseo:
 - **Delegation:** Paseo agents only (`paseo`), never harness subagents, even for lookups. Pick profiles by their notes. Cheap profiles do the heavy lifting (coding, searching); expensive ones (Opus, Astra) only plan, review, advise, and sit on committees. Exception: web research goes to Claude (better web search).
 - **Review:** after building, get a review from an advisor of a different provider family (`paseo-advisor`). Stuck or hard planning: `paseo-committee`. Passing work on: `paseo-handoff`.
 - **Worktrees:** never edit or switch branches in a root checkout (`~/git/<host>/<owner>/<repo>`). One Paseo worktree workspace per PR.
-- **Subagent placement:** launch into your own workspace (omit `workspaceId`) for read-only work (review, search, advice) and for independent workstreams that touch separate files. Create a new worktree workspace only when the subagent needs its own branch or its edits would collide with yours; title it `↳ <task>`.
+- **Subagent placement:** launch into your own workspace (omit `workspaceId`) for read-only work (review, search, advice) and for independent workstreams that touch separate files. Create a new worktree workspace only when the subagent needs its own branch or its edits would collide with yours; title it `↳ [<CODE>] <task>`, with your own workstream's code, e.g. `↳ [CBD] CurveBender description backport (v0.2.27)`.
 - **Waiting:** trust finish notifications; never poll. Don't end your turn while waiting on your own long command (an install, a build): nothing wakes you when it finishes.
 - **Browser QA and screenshots:** Paseo browser tools, headless.
 - **Dev servers:** Paseo workspace scripts (`paseo.json`).
